@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de trabajo</title>
+</head>
+
+<body>
+     
+    <h1 id="bb" >Registro de trabajador</h1>
+    <form method="POST" id="miformulario"  name="miformulario">
+      <table><h1></h1>
+        
+   <tr>
+        <td>Rut:</td>
+        <td><input  placeholder="Sin puntos ni guion" type="text" name="Rut" id="Rut" maxlength="11" required="" pattern="[0-9]+" ></td>
+    </tr>
+    <tr>
+        <td>Nombre:</td>
+        <td><input type="text" name="nombre" id="nombre" required=""  maxlength="30"  ></td>
+    </tr>
+    <tr>
+        <td>Apellido paterno:</td>
+        <td><input type="text" name="apellidop" id="apellidop" required=""  maxlength="30" ></td>
+    </tr>
+    <tr>
+        <td>Apellido materno:</td>
+        <td><input type="text" name="apellidom" id="apellidom" required=""  maxlength="30" ></td>
+    </tr>
+    <tr required="">
+        <td required="">Sexo</td>
+        <td>
+            <input type="radio" name="sexo" id="sexoH" value="H">Masculino
+            <input type="radio" name="sexo" id="sexoM" value="M">Femenino
+        </td>
+    </tr>
+    
+
+    <tr required="" > 
+        <td>Nivel de estudio</td>
+        <td><input type="checkbox" id="notiene"> No tiene </td>
+        <tr><td></td><td><input type="checkbox" id="tecnico"> Tecnico</td></tr>
+        <tr><td></td><td><input type="checkbox" id="uni"> Universitario</td></tr>
+    </tr>
+    <tr>
+        <td>Ciudad de Nacimiento</td>
+        <td><select name="" id="ciudad" >
+            <option value="Rancagua" id="RA">Rancagua</option>
+            <option value="Lima" id="LI">Lima</option>
+            <option value="Arequipa" id="AR">Arequipa</option>
+            <option value="Pisco" id="PI">Pisco</option>
+            <option value="Trujillo" id="TR">Trujillo</option></td>
+        
+            </select>
+    </tr>
+    <tr>
+        <td>CURRICULUM</td>
+        <td>
+            <input type="file" name="nombre_campo" id="CURRICULUM" accept=".pdf,.doc">
+        </td>
+        
+    </tr>
+    <tr> 
+        <td>FOTO</td>
+        <td>
+            <input type="file" name="nombre_campo" id="foto" accept=".jpg,.png">
+        </td>
+
+    </tr>
+</div>
+
+    <tr >
+        <td ><p id="caña2">
+        <input type="button" onclick="validacion()" value="Registrar trabajador">
+        <input type="reset" name="" value="Limpiar" id="limpiar">
+    </p></td></tr>
+    </table>
+
+<script>
+function validacion() {
+    
+    let Rut=document.getElementById("Rut").value;
+    let nombre=document.getElementById("nombre").value;
+    let apellidop=document.getElementById("apellidop").value.trim();
+    let apellidom=document.getElementById("apellidom").value.trim();
+    let sexoH=document.getElementById("sexoH");
+    let sexoM=document.getElementById("sexoM");
+    let notiene=document.getElementById("notiene");
+    let tecnico=document.getElementById("tecnico");
+    let uni=document.getElementById("uni");
+    let ciudad=document.getElementById("ciudad").value;
+    let CURRICULUM=document.getElementById("CURRICULUM").value;
+    let foto=document.getElementById("foto").value;
+    let sexo='';
+    let estudios='';
+
+    if (!notiene.checked){
+        if (!tecnico.checked){
+            if (!uni.checked){
+                alert('falta seleccionar tu nivel de estudio')
+                return false;
+            }
+        }
+    }
+    if (notiene.checked){
+        if (tecnico.checked){
+            alert('solo puede estar seleccionado uno')
+            return false;
+        }
+        else{
+            if (uni.checked){
+                alert('solo puede estar seleccionado uno')
+                return false;
+            }
+        }
+    }
+    if (sexoH.checked){
+        sexo='Masculino'
+    }
+    else {
+        sexo='Femenino'
+    }
+    if (notiene.checked){
+        estudios='notiene'
+    }
+    else if (tecnico.checked){
+        estudios='tecnico'
+    }
+    else {
+        estudios='universitario'
+    }
+    window.location.href='envio.html?RUT='+Rut+'&Nom='+nombre+'&ApePa='+apellidop+'&ApeMa='+apellidom+'&Sex='+sexo+'&Nivel='+estudios+'&Ciudad='+ciudad;
+  }
+</script>
+
+    
+            
+    </form>
+</body>
+</html>

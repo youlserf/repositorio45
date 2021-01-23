@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Guardado Correctamente</h1>
+    <div id="div1"></div>
+    <script>
+        var RUT = getParameterByName('RUT');
+        var Nom = getParameterByName('Nom');
+        var ApePa = getParameterByName('ApePa');
+        var ApeMa = getParameterByName('ApeMa');
+        var Sex = getParameterByName('Sex');
+        var Nivel = getParameterByName('Nivel');
+        var Ciudad = getParameterByName('Ciudad');
+        console.log(RUT)
+
+
+        var newDiv=document.createElement('div')
+        var RUTtext=document.createTextNode('RUT: '+RUT)
+        var Nombretext=document.createTextNode('Nombre: '+Nom)
+        var ApellidoPatext=document.createTextNode('Apellido Paterno: '+ApePa)
+        var ApellidoMatext=document.createTextNode('Apellido Materno: '+ApeMa)
+        var Sexotext=document.createTextNode('Sexo: '+Sex)
+        var NiveldeEstext=document.createTextNode('Nivel de Estudio: '+Nivel)
+        var CiudaddeNacitext=document.createTextNode('Ciudad de Nacimiento: '+Ciudad)
+        var espacio = document.createElement('br');
+        newDiv.appendChild(RUTtext);
+        newDiv.appendChild(espacio);
+        newDiv.appendChild(Nombretext);
+        newDiv.appendChild(espacio);
+        newDiv.appendChild(ApellidoPatext);
+        newDiv.appendChild(espacio);
+        newDiv.appendChild(ApellidoMatext);
+        newDiv.appendChild(espacio);
+        newDiv.appendChild(Sexotext);
+        newDiv.appendChild(espacio);
+        newDiv.appendChild(NiveldeEstext);
+        newDiv.appendChild(espacio);
+        newDiv.appendChild(CiudaddeNacitext);
+        newDiv.appendChild(espacio);
+        var texto = "RUT: "+RUT+'<br> Nombre: '+Nom+'<br> Apellido Paterno: '+ApePa+'<br> Apellido Materno: '+ApeMa+'<br> Sexo: '+Sex+'<br> Nivel de Estudio: '+Nivel+'<br> Ciudad de Nacimiento: '+Ciudad;
+        document.getElementById("div1").innerHTML=texto;
+
+
+  function getParameterByName(name) {
+    name = name.replace(/[[]/, "\[").replace(/[]]/, "\]");
+    var regex = new RegExp("[\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace('/+/g', " "));
+}
+    </script>
+    
+</body>
+</html>
